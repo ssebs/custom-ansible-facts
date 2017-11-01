@@ -1,0 +1,9 @@
+{
+  "Animal" : 
+  {
+    "Type" : "Cat",
+    "Gender" : "Female"
+  },
+  "SomeKey" : "SomeVal",
+  "Foo" : "Bar"
+}

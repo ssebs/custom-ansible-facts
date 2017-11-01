@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Create ansible fact directory
+      file:
+        path: /etc/ansible/facts.d/
+        state: directory
+
+    - name: Copy custom fact JSON
+      copy:
+        src: ../files/sample.fact
+        dest: /etc/ansible/facts.d/
+    
+    - name: Get Ansible facts
+      setup:
+
+    - name: Print new facts
+      debug:
+        msg: "{{ item|json_query('*.Animal.*') }}"
+      with_items:
+        - "{{ ansible_local }}"
